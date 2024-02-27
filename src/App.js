@@ -62,6 +62,15 @@ function App() {
     padding:theme.spacing(2),
     gap:theme.spacing(1)
   }))
+  const resultsMapped = query?.map((e, index) => (
+    <ResultCard key={index}>
+      <ImageWrapper src={`${e?.Poster}`} />
+      <TextWrapper>
+        <Typography variant="body3">{e?.Type}</Typography>
+        <Typography variant="h6">{e?.Title}</Typography>
+      </TextWrapper>
+    </ResultCard>
+  ));
   console.log(query)
   return (
     <>
