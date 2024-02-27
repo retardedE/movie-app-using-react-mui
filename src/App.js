@@ -90,8 +90,10 @@ function App() {
           <SearchIcon sx={{cursor:'pointer', fontSize:"32px"}}/>
           <input onChange={(e)=> setSearch(e.target.value)} value={search} placeholder='Search for movies ...' />
         </div>
-        
-      </Box>
+        <ResultsContainer>
+          {resultsMapped}
+        </ResultsContainer>
+      </Box> responsation
     </>
   );
 }
