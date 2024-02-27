@@ -27,7 +27,25 @@ function App() {
   }))
   console.log(query)
   return (
-    App
+    <>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: 5,
+          backgroundColor: "#1f2123",
+          color: "#c2bebe",
+        }}
+      >
+        <HeadingWrapper>MovieLand</HeadingWrapper>
+        <div className="search">
+          <SearchIcon sx={{cursor:'pointer', fontSize:"32px"}}/>
+          <input onChange={(e)=> setSearch(e.target.value)} value={search} placeholder='Search for movies ...' />
+        </div>
+      </Box>
+    </>
   );
 }
 
