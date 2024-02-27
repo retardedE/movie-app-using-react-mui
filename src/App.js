@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
-import { styled, Box } from '@mui/material';
+import { styled, Box, Typography } from '@mui/material';
 import { alpha, InputBase } from '@mui/material';
 import SearchIcon from "@mui/icons-material/Search";
 const apiKey = "c2f46938";
 function App() {
-  const [query,setQuery]=useState('')
+  const [query,setQuery]=useState([])
   const [search,setSearch]=useState('')
   const fetchData = (movieTitle) =>{
     fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=${apiKey}&s=${movieTitle}`)
@@ -24,6 +24,43 @@ function App() {
     fontSize:"48px",
     marginBottom:theme.spacing(4),
     color:theme.palette.primary.textColor,
+  }))
+  const ResultsContainer = styled("div")(({theme})=>({
+    display:"flex",
+    flexDirection:"row",
+    gap:theme.spacing(3),
+    justifyContent:"center",
+    alignItems:"center",
+    flexWrap:"wrap",
+    minHeight:"55.8vh",
+    padding:theme.spacing(2)
+  }))
+  const ResultCard = styled("div")(({theme})=> ({
+    display:"flex",
+    flexDirection:"column",
+    height:500,
+    width:300,
+    cursor:"pointer",
+    boxShadow: theme.shadows[3],
+    borderRadius:theme.spacing(1),
+    backgroundColor:theme.palette.primary.main,
+    color:theme.palette.primary.textColor,
+    [theme.breakpoints.down("sm")]:{
+      height:400,
+      width:200,
+    }
+  }))
+  const ImageWrapper = styled("img")(({theme})=> ({
+    height:"70%",
+    width:"100%",
+    objectFit:"fill"
+  }))
+  const TextWrapper = styled("div")(({theme}) =>({
+    display:"flex",
+    flexDirection:"column",
+    alignItems:"start",
+    padding:theme.spacing(2),
+    gap:theme.spacing(1)
   }))
   console.log(query)
   return (
@@ -44,6 +81,7 @@ function App() {
           <SearchIcon sx={{cursor:'pointer', fontSize:"32px"}}/>
           <input onChange={(e)=> setSearch(e.target.value)} value={search} placeholder='Search for movies ...' />
         </div>
+        
       </Box>
     </>
   );
